@@ -244,7 +244,10 @@ public class FirstController implements Initializable {
 
 
 
-
+        if (!FileHandler.doesSaveFileExist()){
+            Exercises exercises = JAXBHelper.fromXML(Exercises.class, getClass().getClassLoader().getResourceAsStream("xml/exercises.xml"));
+            FileHandler.createSaveFile(exercises);
+        }
 
         /**
          * Set up the columns in the table
@@ -362,9 +365,24 @@ public class FirstController implements Initializable {
 
     }
 
+    /**
+     * @param trainingExercises name of an exercise type
+     * @return This method will return an ObservableList of Exercise objects
+     * @throws JAXBException if any problem occurs during deserialization
+     *
+     */
 
+    public static ObservableList<Exercise> getExercise(String trainingExercises) throws JAXBException, FileNotFoundException {
+        Exercises workoutExercises = FileHandler.loadExercises();
+        ObservableList<Exercise> exercises = FXCollections.observableArrayList();
+        for (Exercise exercise:workoutExercises.getExercise()) {
+            if (exercise != null && exercise.getExerciseType().equals(trainingExercises)){
+                exercises.add(exercise);
+            }
+        }
 
-
+        return exercises;
+    }
 
     public void switchToPlan(ActionEvent event) throws IOException {
 
