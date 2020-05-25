@@ -1,5 +1,6 @@
 package controller;
 
+
 import jaxb.JAXBHelper;
 import model.Exercise;
 import model.Exercises;
@@ -10,13 +11,14 @@ import java.io.*;
 import java.util.ArrayList;
 
 
+
 /**
  * Class for handling file operations.
  * */
 public class FileHandler {
     /**
      * Loads exercises of the programe.
-     *
+     * @return Exercises class and InputStream with JAXBHelper
      * */
     public static Exercises loadExercises() throws JAXBException, FileNotFoundException {
         String userHome = System.getProperty("user.home");
@@ -74,6 +76,7 @@ public class FileHandler {
 
     /**
      * Creates save file.
+     * @param exercises The crated save filme's name
      * */
     public static void createSaveFile(Exercises exercises) throws IOException, JAXBException {
         Logger.info("Save file not found. Creating save file.");

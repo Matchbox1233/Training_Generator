@@ -10,9 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -20,6 +18,7 @@ import jaxb.JAXBHelper;
 import lombok.SneakyThrows;
 import model.Exercise;
 import model.Exercises;
+import org.tinylog.Logger;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
@@ -27,7 +26,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This class is control the base fxml.
+ */
 public class FirstController implements Initializable {
+    /**
+     * These are implementations from the base fxml.
+     */
     @FXML
     public ImageView image1;
     @FXML
@@ -69,21 +74,26 @@ public class FirstController implements Initializable {
     @FXML
     private Pane Base_Pane;
     @FXML
-    public TextField Exercise_Add_TextField;
+    private TextField Exercise_Add_TextField;
 
     private exerciseType Exercise_Type;
     private exerciseType Exercise_Generator_Type;
 
-
+    /**
+     *This method give back the base scene.
+     * @param event The event for the back step
+     */
     @FXML
     private void handleAlertButton(ActionEvent event){
         Base_Pane.setOpacity(1);
         Base_Pane.setDisable(false);
         Alert_Pane.setVisible(false);
         Alert_Text.setText("");
-
     }
 
+    /**
+     * Choice Box events.
+     */
     public void choiceBoxClick() {
         if (Choice_Box.getValue() == "Mell"){
             Exercise_Generator_Type = exerciseType.Chest;
@@ -112,6 +122,10 @@ public class FirstController implements Initializable {
         Chest,Back,Shoulder,Abs,Leg,Biceps,Triceps
     }
 
+    /**
+     This method can help to load Chest table.
+     * @param event The event get the Item from menu items
+     */
     @FXML
     protected void chestItem(ActionEvent event) {
         Table_Chest.setVisible(true);
@@ -126,6 +140,10 @@ public class FirstController implements Initializable {
 
     }
 
+    /**
+     This method can help to load Back table.
+     * @param event The event get the Item from menu items
+     */
     @FXML
     public void backItem(ActionEvent event) {
         Table_Chest.setVisible(false);
@@ -138,6 +156,10 @@ public class FirstController implements Initializable {
         Exercise_Type = exerciseType.Back;
     }
 
+    /**
+     This method can help to load Shoulder table.
+     * @param event The event get the Item from menu items
+     */
     @FXML
     public void shoulderItem(ActionEvent event) {
         Table_Chest.setVisible(false);
@@ -150,6 +172,10 @@ public class FirstController implements Initializable {
         Exercise_Type = exerciseType.Shoulder;
     }
 
+    /**
+     This method can help to load Abs table.
+     * @param event The event get the Item from menu items
+     */
     @FXML
     public void absItem(ActionEvent event) {
         Table_Chest.setVisible(false);
@@ -162,6 +188,10 @@ public class FirstController implements Initializable {
         Exercise_Type = exerciseType.Abs;
     }
 
+    /**
+     This method can help to load Leg table.
+     * @param event The event get the Item from menu items
+     */
     @FXML
     public void legItem(ActionEvent event) {
         Table_Chest.setVisible(false);
@@ -174,6 +204,10 @@ public class FirstController implements Initializable {
         Exercise_Type = exerciseType.Leg;
     }
 
+    /**
+     *This method can help to load Biceps table.
+     * @param event The event get the Item from menu items
+     */
     @FXML
     public void bicepsItem(ActionEvent event) {
         Table_Chest.setVisible(false);
@@ -186,6 +220,10 @@ public class FirstController implements Initializable {
         Exercise_Type = exerciseType.Biceps;
     }
 
+    /**
+     *This method can help to load Triceps table.
+     * @param event The event get the Item from menu items
+     */
     @FXML
     public void tricepsItem(ActionEvent event) {
         Table_Chest.setVisible(false);
@@ -197,46 +235,6 @@ public class FirstController implements Initializable {
         Table_Triceps.setVisible(true);
         Exercise_Type = exerciseType.Triceps;
     }
-
-    /**
-     * edittedCell This method will allow the user to double click on a cell and update the exercise
-     */
-    public void changeChestExerciseCellEvent(CellEditEvent edittedCell) {
-
-        Exercise chestExerciseSelected = Table_Chest.getSelectionModel().getSelectedItem();
-        chestExerciseSelected.setExercise(edittedCell.getNewValue().toString());
-    }
-
-    public void changeBackExerciseCellEvent(CellEditEvent edittedCell) {
-        Exercise backExerciseSelected = Table_Back.getSelectionModel().getSelectedItem();
-        backExerciseSelected.setExercise(edittedCell.getNewValue().toString());
-    }
-
-    public void changeShoulderExerciseCellEvent(CellEditEvent edittedCell) {
-        Exercise shoulderExerciseSelected = Table_Shoulder.getSelectionModel().getSelectedItem();
-        shoulderExerciseSelected.setExercise(edittedCell.getNewValue().toString());
-    }
-
-    public void changeAbsExerciseCellEvent(CellEditEvent edittedCell) {
-        Exercise AbsExerciseSelected = Table_Abs.getSelectionModel().getSelectedItem();
-        AbsExerciseSelected.setExercise(edittedCell.getNewValue().toString());
-    }
-
-    public void changeLegExerciseCellEvent(CellEditEvent edittedCell) {
-        Exercise legExerciseSelected = Table_Leg.getSelectionModel().getSelectedItem();
-        legExerciseSelected.setExercise(edittedCell.getNewValue().toString());
-    }
-
-    public void changeBicepsExerciseCellEvent(CellEditEvent edittedCell) {
-        Exercise bicepsExerciseSelected = Table_Biceps.getSelectionModel().getSelectedItem();
-        bicepsExerciseSelected.setExercise(edittedCell.getNewValue().toString());
-    }
-
-    public void changeTricepsExerciseCellEvent(CellEditEvent edittedCell) {
-        Exercise tricepsExerciseSelected = Table_Triceps.getSelectionModel().getSelectedItem();
-        tricepsExerciseSelected.setExercise(edittedCell.getNewValue().toString());
-    }
-
 
     @SneakyThrows
     @Override
@@ -250,7 +248,7 @@ public class FirstController implements Initializable {
         }
 
         /**
-         * Set up the columns in the table
+         * Set up the columns in the table.
          */
         Chest_Column.setCellValueFactory(new PropertyValueFactory<Exercise, String>("exercise"));
         Back_Column.setCellValueFactory(new PropertyValueFactory<Exercise, String>("exercise"));
@@ -261,7 +259,7 @@ public class FirstController implements Initializable {
         Triceps_Column.setCellValueFactory(new PropertyValueFactory<Exercise, String>("exercise"));
 
         /**
-         *Load exercises in the table
+         *Load exercises in the table.
          */
         Table_Chest.setItems(getExercise("Chest"));
         Table_Back.setItems(getExercise("Back"));
@@ -272,25 +270,7 @@ public class FirstController implements Initializable {
         Table_Triceps.setItems(getExercise("Triceps"));
 
         /**
-         * Update all table to allow for the exercise fields to be editable
-         */
-        Table_Chest.setEditable(true);
-        Chest_Column.setCellFactory(TextFieldTableCell.forTableColumn());
-        Table_Back.setEditable(true);
-        Back_Column.setCellFactory(TextFieldTableCell.forTableColumn());
-        Table_Shoulder.setEditable(true);
-        Shoulder_Column.setCellFactory(TextFieldTableCell.forTableColumn());
-        Table_Leg.setEditable(true);
-        Leg_Column.setCellFactory(TextFieldTableCell.forTableColumn());
-        Table_Abs.setEditable(true);
-        Abs_Column.setCellFactory(TextFieldTableCell.forTableColumn());
-        Table_Biceps.setEditable(true);
-        Biceps_Column.setCellFactory(TextFieldTableCell.forTableColumn());
-        Table_Triceps.setEditable(true);
-        Triceps_Column.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        /**
-         * This items are for configuring the ChoiceBox
+         * This items are for configuring the ChoiceBox.
          */
         Choice_Box.getItems().add("Mell");
         Choice_Box.getItems().add("Hát");
@@ -300,12 +280,13 @@ public class FirstController implements Initializable {
         Choice_Box.getItems().add("Biceps");
         Choice_Box.getItems().add("Triceps");
 
-
-
     }
 
+
     /**
-     * This method will create a new Exercise object and add it to the table
+     * This method will create a new Exercise object and add it to the table.
+     * @throws IOException if any problem occurs adding a new exercise
+     * @throws JAXBException if any problem occurs during addition
      */
     public void addExercise() throws IOException, JAXBException {
         Exercise newExercise = null;
@@ -369,9 +350,8 @@ public class FirstController implements Initializable {
      * @param trainingExercises name of an exercise type
      * @return This method will return an ObservableList of Exercise objects
      * @throws JAXBException if any problem occurs during deserialization
-     *
+     *@throws FileNotFoundException if any problem with the existence of the file
      */
-
     public static ObservableList<Exercise> getExercise(String trainingExercises) throws JAXBException, FileNotFoundException {
         Exercises workoutExercises = FileHandler.loadExercises();
         ObservableList<Exercise> exercises = FXCollections.observableArrayList();
@@ -384,7 +364,13 @@ public class FirstController implements Initializable {
         return exercises;
     }
 
+    /**
+     *
+     * @param event Switch to the generate fxml
+     * @throws IOException if any problem occurs generating a new workout plan
+     */
     public void switchToPlan(ActionEvent event) throws IOException {
+        Logger.info("Switch to the generate xml");
 
         int Number = Integer.parseInt(Exercise_Number.getText());
         if (Number <= 8){

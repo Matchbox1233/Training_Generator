@@ -17,12 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class is control the generate fxml.
+ */
 public class SecondController {
+    /**
+     * These are implementations from the generate fxml.
+     */
     @FXML
     public ImageView image2;
     @FXML
     private Label Training_Plan;
 
+    /**
+     * This method create a random workout plan.
+     * @param exercises The list of exercises
+     * @param number Number of the exercises
+     */
     public void data(ObservableList<Exercise> exercises, int number){
         List<Exercise> generatedExercises = new ArrayList<>();
         Random random = new Random();
@@ -43,6 +54,11 @@ public class SecondController {
         Training_Plan.setText(plan);
     }
 
+    /**
+     * This method can change the fxml to the base fxml.
+     * @param event The event of the step back
+     * @throws IOException if any problem occurs switch bac to the base fxml
+     */
     public void switchToBase(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/base.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

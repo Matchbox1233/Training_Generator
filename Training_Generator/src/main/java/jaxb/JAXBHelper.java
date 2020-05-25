@@ -36,6 +36,7 @@ public class JAXBHelper {
      *
      * @param clazz the class of the object
      * @param is the {@code InputStream} to read from
+     * @param <T> the type of the resulting object
      * @return the resulting object
      * @throws JAXBException if any problem occurs during deserialization
      */

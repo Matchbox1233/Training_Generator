@@ -4,10 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/**
+ * This class set the window parameters and load the base fxml.
+ */
 public class MyApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
