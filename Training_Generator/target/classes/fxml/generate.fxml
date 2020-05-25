@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="Generate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SecondController">
+   <children>
+      <Label fx:id="Training_Plan" alignment="CENTER" contentDisplay="CENTER" layoutX="342.0" layoutY="67.0" prefHeight="353.0" prefWidth="237.0" />
+      <Button fx:id="Back_Button" layoutX="277.0" layoutY="448.0" mnemonicParsing="false" onAction="#switchToBase" text="Vissza">
+         <font>
+            <Font name="Lucida Fax Demibold" size="10.0" />
+         </font></Button>
+      <Text fill="RED" layoutX="167.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generált edzésterv" wrappingWidth="277.07958984375">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+      </Text>
+      <ImageView id="image2" fx:id="image2" fitHeight="368.0" fitWidth="290.0" layoutX="24.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/image2.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
