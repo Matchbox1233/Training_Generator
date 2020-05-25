@@ -43,13 +43,13 @@
                   <Font name="Modern No. 20" size="17.0" />
                </font>
                <items>
-                  <MenuItem fx:id="Chest" mnemonicParsing="false"  text="Mell" />
-                  <MenuItem id="Shoulder" mnemonicParsing="false"  text="Váll" />
-                  <MenuItem fx:id="Back" mnemonicParsing="false"  text="Hát" />
-                  <MenuItem id="Abs" fx:id="Abs" mnemonicParsing="false"  text="Has" />
-                  <MenuItem id="Leg" fx:id="Leg" mnemonicParsing="false"  text="Láb" />
-                  <MenuItem id="Biceps" fx:id="Biceps" mnemonicParsing="false"  text="Bicepsz" />
-                  <MenuItem id="Triceps" fx:id="Triceps" mnemonicParsing="false"  text="Tricepsz" />
+                  <MenuItem fx:id="Chest" onAction="#chestItem" mnemonicParsing="false"  text="Mell" />
+                  <MenuItem id="Shoulder" onAction="#shoulderItem" mnemonicParsing="false"  text="Váll" />
+                  <MenuItem fx:id="Back" onAction="#backItem" mnemonicParsing="false"  text="Hát" />
+                  <MenuItem id="Abs" fx:id="Abs" onAction="#absItem" mnemonicParsing="false"  text="Has" />
+                  <MenuItem id="Leg" fx:id="Leg" onAction="#legItem" mnemonicParsing="false"  text="Láb" />
+                  <MenuItem id="Biceps" fx:id="Biceps" onAction="#bicepsItem" mnemonicParsing="false"  text="Bicepsz" />
+                  <MenuItem id="Triceps" fx:id="Triceps" onAction="#tricepsItem" mnemonicParsing="false"  text="Tricepsz" />
                </items>
             </MenuButton>
             <TableView fx:id="Table_Chest" editable="true" layoutX="259.0" layoutY="51.3076171875" prefHeight="364.0" prefWidth="330.0">
