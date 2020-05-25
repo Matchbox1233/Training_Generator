@@ -5,8 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.xml.bind.annotation.*;
-
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * This class is a getter and setter to the exercises.
@@ -17,7 +18,7 @@ import javax.xml.bind.annotation.*;
 @AllArgsConstructor
 public class Exercise {
 
-
+    @XmlJavaTypeAdapter(SimpleStringAdapter.class)
     private SimpleStringProperty exercise;
     private String exerciseType;
 
@@ -38,3 +39,4 @@ public class Exercise {
         this.exercise = new SimpleStringProperty(exercise);
     }
 }
+

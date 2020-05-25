@@ -1,16 +1,28 @@
 package controller;
 
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import jaxb.JAXBHelper;
+import lombok.SneakyThrows;
 import model.Exercise;
-import javafx.scene.control.TableColumn.CellEditEvent;
+import model.Exercises;
+
+import javax.xml.bind.JAXBException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -226,9 +238,13 @@ public class FirstController implements Initializable {
     }
 
 
-
+    @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+
+
 
         /**
          * Set up the columns in the table
@@ -241,6 +257,16 @@ public class FirstController implements Initializable {
         Biceps_Column.setCellValueFactory(new PropertyValueFactory<Exercise, String>("exercise"));
         Triceps_Column.setCellValueFactory(new PropertyValueFactory<Exercise, String>("exercise"));
 
+        /**
+         *Load exercises in the table
+         */
+        Table_Chest.setItems(getExercise("Chest"));
+        Table_Back.setItems(getExercise("Back"));
+        Table_Shoulder.setItems(getExercise("Shoulder"));
+        Table_Abs.setItems(getExercise("Abs"));
+        Table_Leg.setItems(getExercise("Leg"));
+        Table_Biceps.setItems(getExercise("Biceps"));
+        Table_Triceps.setItems(getExercise("Triceps"));
 
         /**
          * Update all table to allow for the exercise fields to be editable
@@ -278,7 +304,7 @@ public class FirstController implements Initializable {
     /**
      * This method will create a new Exercise object and add it to the table
      */
-    public void addExercise() throws IOException{
+    public void addExercise() throws IOException, JAXBException {
         Exercise newExercise = null;
 
         /**
@@ -332,8 +358,60 @@ public class FirstController implements Initializable {
 
         }
 
+        FileHandler.saveExercisesInTheTable(newExercise);
 
     }
+
+
+
+
+
+    public void switchToPlan(ActionEvent event) throws IOException {
+
+        int Number = Integer.parseInt(Exercise_Number.getText());
+        if (Number <= 8){
+            choiceBoxClick();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/generate.fxml"));
+            Parent root = fxmlLoader.load();
+            SecondController controller = fxmlLoader.<SecondController>getController();
+            if (Exercise_Generator_Type == exerciseType.Chest) {
+                controller.data(Table_Chest.getItems(), Number);
+            }
+            else if (Exercise_Generator_Type == exerciseType.Back) {
+                controller.data(Table_Back.getItems(), Number);
+            }
+            else if (Exercise_Generator_Type == exerciseType.Shoulder) {
+                controller.data(Table_Shoulder.getItems(), Number);
+            }
+            else if (Exercise_Generator_Type == exerciseType.Abs) {
+                controller.data(Table_Abs.getItems(), Number);
+            }
+            else if (Exercise_Generator_Type == exerciseType.Leg) {
+                controller.data(Table_Leg.getItems(), Number);
+            }
+            else if (Exercise_Generator_Type == exerciseType.Biceps) {
+                controller.data(Table_Biceps.getItems(), Number);
+            }
+            else if (Exercise_Generator_Type == exerciseType.Triceps) {
+                controller.data(Table_Triceps.getItems(), Number);
+            }
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }
+        else{
+            Base_Pane.setOpacity(0.3);
+            Base_Pane.setDisable(true);
+            Alert_Pane.setVisible(true);
+            Alert_Text.setText("Maximum 8 gyakorlat generálható!\n Többet úgyse bírsz!");
+
+        }
+
+
+    }
+
 
 
 

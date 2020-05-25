@@ -20,9 +20,7 @@
          </font>
       </Text>
       <ImageView id="image2" fx:id="image2" fitHeight="368.0" fitWidth="290.0" layoutX="24.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/image2.jpg" />
-         </image>
+
       </ImageView>
    </children>
 </AnchorPane>
