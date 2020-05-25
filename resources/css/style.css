@@ -1,0 +1,63 @@
+.root{
+    -fx-background-color: #303030;
+}
+
+
+.button{
+    -fx-font: 17px "Times New Roman";
+    -fx-font-weight: bolder;
+    -fx-text-fill: red;
+    -fx-padding: 5;
+    -fx-background-color: black;
+    -fx-effect: dropshadow(one-pass-box, black, 20, 0.0, 6, 6);
+    -fx-background-radius: 8;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+
+}
+
+.label{
+    -fx-font: 17px "Times New Roman";
+    -fx-font-weight: bolder;
+    -fx-text-fill: red;
+    -fx-padding: 8;
+    -fx-text-alignment: center;
+
+
+}
+
+.choice-box{
+    -fx-background-color: #505050;
+    -fx-font: 17px "Times New Roman";
+    -fx-font-weight: bolder;
+    -fx-text-fill: red;
+}
+
+.table-view{
+    -fx-background-color: #303030;
+}
+
+.table-column{
+    -fx-background-color: #505050;
+    -fx-font: 17px "Times New Roman";
+    -fx-font-weight: bolder;
+    -fx-text-fill: red;
+    -fx-background-radius: 6;
+
+}
+
+.menu-button{
+    -fx-background-color: #505050;
+}
+
+.menu-item{
+    -fx-background-color: #505050;
+}
+
+.text-field{
+    -fx-background-color: #505050;
+    -fx-font: 17px "Times New Roman";
+    -fx-font-weight: bolder;
+    -fx-text-fill: red;
+}
+

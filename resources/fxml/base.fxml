@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FirstController">
+   <children>
+      <Pane id="Base" fx:id="Base_Pane" layoutX="11.0" layoutY="7.6923828125" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="489.0" layoutY="448.3076171875" mnemonicParsing="false" onAction="#addExercise" text="Hozzáadás" />
+            <Label layoutX="259.0" layoutY="415.3076171875" text="Új gyakorlat hozzáadása:" />
+            <Label layoutX="29.0" layoutY="371.0" text="Gyakorlatok száma " />
+            <ChoiceBox fx:id="Choice_Box" layoutX="35.0" layoutY="332.0" prefWidth="150.0" />
+            <TableView fx:id="Table_Triceps" editable="true" layoutX="259.0" layoutY="51.3076171875" prefHeight="364.0" prefWidth="330.0">
+               <columns>
+                  <TableColumn fx:id="Triceps_Column" onEditCommit="#changeTricepsExerciseCellEvent" prefWidth="329.0" resizable="false" text="Tricepsz gyakorlatok" />
+               </columns>
+            </TableView>
+            <TableView fx:id="Table_Biceps" editable="true" layoutX="259.0" layoutY="51.3076171875" prefHeight="364.0" prefWidth="330.0">
+               <columns>
+                  <TableColumn fx:id="Biceps_Column" onEditCommit="#changeBicepsExerciseCellEvent" prefWidth="329.0" resizable="false" text="Bicepsz gyakorlatok" />
+               </columns>
+            </TableView>
+            <Text fill="RED" layoutX="148.0" layoutY="35.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Edzésterv generátor" textAlignment="CENTER" wrappingWidth="293.41748046875">
+               <font>
+                  <Font name="Impact" size="35.0" />
+               </font>
+            </Text>
+            <TableView fx:id="Table_Leg" editable="true" layoutX="259.0" layoutY="51.3076171875" prefHeight="364.0" prefWidth="330.0">
+               <columns>
+                  <TableColumn fx:id="Leg_Column" onEditCommit="#changeLegExerciseCellEvent" prefWidth="329.0" resizable="false" text="Láb gyakorlatok" />
+               </columns>
+            </TableView>
+            <MenuButton layoutX="33.0" layoutY="64.3076171875" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" text="Izomcsoportok">
+               <font>
+                  <Font name="Modern No. 20" size="17.0" />
+               </font>
+               <items>
+                  <MenuItem fx:id="Chest" mnemonicParsing="false" onAction="#chestItem" text="Mell" />
+                  <MenuItem id="Shoulder" mnemonicParsing="false" onAction="#shoulderItem" text="Váll" />
+                  <MenuItem fx:id="Back" mnemonicParsing="false" onAction="#backItem" text="Hát" />
+                  <MenuItem id="Abs" fx:id="Abs" mnemonicParsing="false" onAction="#absItem" text="Has" />
+                  <MenuItem id="Leg" fx:id="Leg" mnemonicParsing="false" onAction="#legItem" text="Láb" />
+                  <MenuItem id="Biceps" fx:id="Biceps" mnemonicParsing="false" onAction="#bicepsItem" text="Bicepsz" />
+                  <MenuItem id="Triceps" fx:id="Triceps" mnemonicParsing="false" onAction="#tricepsItem" text="Tricepsz" />
+               </items>
+            </MenuButton>
+            <TableView fx:id="Table_Chest" editable="true" layoutX="259.0" layoutY="51.3076171875" prefHeight="364.0" prefWidth="330.0">
+               <columns>
+                  <TableColumn fx:id="Chest_Column" onEditCommit="#changeChestExerciseCellEvent" prefWidth="329.0" resizable="false" text="Mell gyakorlatok" />
+               </columns>
+            </TableView>
+            <TextField fx:id="Exercise_Number" layoutX="76.0" layoutY="408.0" prefHeight="25.0" prefWidth="64.0" />
+            <Button id="GenerateButton" fx:id="GenerateButton" layoutX="21.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchToPlan" prefHeight="30.0" prefWidth="175.0" text="Edzésterv generálás">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="10.0" />
+               </font>
+            </Button>
+            <Label layoutX="44.0" layoutY="295.0" text="Edzésterv típus" />
+            <TableView fx:id="Table_Shoulder" editable="true" layoutX="259.0" layoutY="51.3076171875" prefHeight="364.0" prefWidth="330.0">
+               <columns>
+                  <TableColumn fx:id="Shoulder_Column" onEditCommit="#changeShoulderExerciseCellEvent" prefWidth="329.0" resizable="false" text="Váll gyakorlatok" />
+               </columns>
+            </TableView>
+            <TableView fx:id="Table_Back" layoutX="259.0" layoutY="51.3076171875" prefHeight="364.0" prefWidth="330.0">
+               <columns>
+                  <TableColumn fx:id="Back_Column" onEditCommit="#changeBackExerciseCellEvent" prefWidth="329.0" resizable="false" text="Hát gyakorlatok" />
+               </columns>
+            </TableView>
+            <TableView fx:id="Table_Abs" editable="true" layoutX="259.0" layoutY="51.3076171875" prefHeight="364.0" prefWidth="330.0">
+               <columns>
+                  <TableColumn fx:id="Abs_Column" onEditCommit="#changeAbsExerciseCellEvent" prefWidth="329.0" resizable="false" text="Has gyakorlatok" />
+               </columns>
+            </TableView>
+            <TextField fx:id="Exercise_Add_TextField" layoutX="259.0" layoutY="451.3076171875" promptText="Gyakorlat név" />
+            <ImageView id="image1" fx:id="image1" fitHeight="187.0" fitWidth="188.0" layoutX="14.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/image1.jpg" />
+               </image></ImageView>
+         </children>
+      </Pane>
+      <Pane id="Alert_Pane" fx:id="Alert_Pane" prefHeight="500.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#303030" height="200.0" layoutX="140.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="350.0" />
+            <Label id="Alert_Text" fx:id="Alert_Text" alignment="CENTER" layoutX="140.0" layoutY="150.0" prefHeight="136.0" prefWidth="350.0" textAlignment="CENTER" wrapText="true" />
+            <Button id="Alert_Button" fx:id="Alert_Button" layoutX="297.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleAlertButton" text="OK" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
